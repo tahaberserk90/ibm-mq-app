@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/backend_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123!!
+    depends_on:
+      - db
+      - ibmmq
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=backend_db
+      - POSTGRES_PASSWORD=123!!
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  ibmmq:
+    image: ibmcom/mq:9.2.4.0-r1
+    ports:
+      - "1414:1414"
+      - "9443:9443"
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
+      - MQ_APP_PASSWORD=passw0rd
+      - MQ_ADMIN_PASSWORD=passw0rd
+    volumes:
+      - qmdata:/mnt/mqm
+
+volumes:
+  postgres_data:
+  qmdata:

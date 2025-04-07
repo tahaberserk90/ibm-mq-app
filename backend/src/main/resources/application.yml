@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/backend_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+ibm:
+  mq:
+    host: localhost
+    port: 1414
+    queueManager: QM1
+    channel: DEV.APP.SVRCONN
+    username: app
+    password: passw0rd
+    queue: DEV.QUEUE.1
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs

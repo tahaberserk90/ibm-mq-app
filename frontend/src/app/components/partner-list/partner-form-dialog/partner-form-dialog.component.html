@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add New Partner</h1>
+<div mat-dialog-content>
+  <form [formGroup]="partnerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Alias</mat-label>
+      <input matInput formControlName="alias" required>
+      <mat-error *ngIf="partnerForm.get('alias')?.hasError('required')">Alias is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type" required>
+      <mat-error *ngIf="partnerForm.get('type')?.hasError('required')">Type is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Direction</mat-label>
+      <mat-select formControlName="direction" required>
+        <mat-option *ngFor="let direction of directions" [value]="direction">{{direction}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="partnerForm.get('direction')?.hasError('required')">Direction is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Application</mat-label>
+      <input matInput formControlName="application">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Processed Flow Type</mat-label>
+      <mat-select formControlName="processedFlowType" required>
+        <mat-option *ngFor="let flowType of flowTypes" [value]="flowType">{{flowType}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="partnerForm.get('processedFlowType')?.hasError('required')">Flow Type is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error *ngIf="partnerForm.get('description')?.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!partnerForm.valid" (click)="onSubmit()">Save</button>
+</div>

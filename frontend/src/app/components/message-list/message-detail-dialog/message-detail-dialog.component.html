@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Message Details</h1>
+<div mat-dialog-content>
+  <div class="detail-row">
+    <span class="detail-label">ID:</span>
+    <span>{{message.id}}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Timestamp:</span>
+    <span>{{message.timestamp | date:'medium'}}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Status:</span>
+    <span>{{message.status}}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Content:</span>
+    <pre>{{message.content | json}}</pre>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</div>
