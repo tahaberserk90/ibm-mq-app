@@ -9,9 +9,17 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/backend_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=123!!
+      - IBM_MQ_HOST=ibmmq # Updated to match the IBM MQ service name
+      - IBM_MQ_PORT=1414
+      - IBM_MQ_QUEUE_MANAGER=QM1
+      - IBM_MQ_CHANNEL=DEV.APP.SVRCONN
+      - IBM_MQ_USERNAME=app
+      - IBM_MQ_PASSWORD=passw0rd
+      - IBM_MQ_QUEUE=DEV.QUEUE.1
     depends_on:
       - db
       - ibmmq
+
   frontend:
     build: ./frontend
     ports:
