@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MessageDetailDialogComponent } from './message-detail-dialog/message-detail-dialog.component';
 import { MessageService } from '../../services/message.service';
 import { Message } from '../../models/message.model';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-message-list',
@@ -15,8 +16,11 @@ import { Message } from '../../models/message.model';
   imports: [
     CommonModule,
     MatTableModule,
-    MatIconModule
-  ]
+    MatIconModule,
+    MatDialogModule,
+    HttpClientModule
+  ],
+  providers: [MessageService]
 })
 export class MessageListComponent {
   messages: Message[] = [];
