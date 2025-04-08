@@ -12,5 +12,5 @@ FROM nginx:alpine
 RUN rm -rf /etc/nginx/conf.d/* && \
     sed -i '/daemon/d' /etc/nginx/nginx.conf
 
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
+COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
