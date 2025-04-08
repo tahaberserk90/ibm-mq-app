@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { PartnerService } from '../../services/partner.service';
-import { Partner } from '../../models/partner.model';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { PartnerFormDialogComponent } from './partner-form-dialog/partner-form-dialog.component';
+import { MatTableModule } from '@angular/material/table';
+import { PartnerService } from '../../services/partner.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Partner } from '../../models/partner.model';
 
 @Component({
   selector: 'app-partner-list',
   templateUrl: './partner-list.component.html',
-  styleUrls: ['./partner-list.component.scss']
+  styleUrls: ['./partner-list.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatTableModule
+  ]
 })
-export class PartnerListComponent implements OnInit {
+export class PartnerListComponent {
   partners: Partner[] = [];
   displayedColumns: string[] = ['alias', 'type', 'direction', 'application', 'processedFlowType', 'description', 'actions'];
 
@@ -19,11 +28,9 @@ export class PartnerListComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) { }
-
   ngOnInit(): void {
     this.loadPartners();
   }
-
   loadPartners(): void {
     this.partnerService.getPartners().subscribe(
       partners => this.partners = partners,

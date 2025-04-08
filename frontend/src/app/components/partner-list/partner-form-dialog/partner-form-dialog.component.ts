@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { Direction, ProcessedFlowType, Partner } from '../../../models/partner.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-partner-form-dialog',
   templateUrl: './partner-form-dialog.component.html',
-  styleUrls: ['./partner-form-dialog.component.scss']
+  styleUrls: ['./partner-form-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    CommonModule
+  ]
 })
 export class PartnerFormDialogComponent {
   partnerForm: FormGroup;

@@ -7,7 +7,7 @@ import { Partner } from '../models/partner.model';
   providedIn: 'root'
 })
 export class PartnerService {
-  private apiUrl = 'api/partners'; // Update with your actual API endpoint
+  private apiUrl = 'http://localhost:8080/api/partners';
 
   constructor(private http: HttpClient) { }
 

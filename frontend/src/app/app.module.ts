@@ -19,16 +19,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    // Add all your components here
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    
-    // Material modules
+    AppComponent,
+
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
@@ -40,6 +39,5 @@ import { AppRoutingModule } from './app-routing.module';
     MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
